@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool checkValid(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        int m = matrix[0].size();
+        unordered_map<int,int> mapp;
+        //checking row wise
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                mapp[matrix[i][j]]++;
+            }
+            for(auto it:mapp){
+                if(it.second!=1 || it.first>n || it.first<=0){
+                    return false;
+                }
+            }
+            mapp.clear();
+        }
+        //checking column wise
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                mapp[matrix[j][i]]++;
+            }
+            for(auto it:mapp){
+                if(it.second!=1 || it.first>n || it.first<=0){
+                    return false;
+                }
+            }
+            mapp.clear();
+        }
+        return true;
+    }
+};
