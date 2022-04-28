@@ -1,4 +1,4 @@
-import java.io.*;
+//import java.io.*;
 import java.util.*;
 
 public class Powerlogarithmic {
@@ -9,6 +9,7 @@ public class Powerlogarithmic {
         Scanner sc = new Scanner(System.in);
         int x=sc.nextInt();
         int n=sc.nextInt();
+        sc.close();
         int ans = power(x,n);
         System.out.println("the"+x+"raised to power"+n+"is"+ans);
     }
