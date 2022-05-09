@@ -1,0 +1,63 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+    Scanner sc = new Scanner (System.in);
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+    ArrayList<String> ans = new ArrayList<String>();
+    ans=getMazePaths(0,0,n-1,m-1);
+    System.out.println(ans);
+
+    }
+
+    // sr - source row
+    // sc - source column
+    // dr - destination row
+    // dc - destination column
+    public static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc) {
+        //good base case
+
+        
+        if(sr==dr && sc==dc){
+           ArrayList<String> base = new ArrayList<String>();
+           base.add("");
+           return base;
+        }
+        //bad test vase
+        if(sc>dc || sr>dr){
+          ArrayList<String> empty = new ArrayList<String>();return empty;
+        }
+        ArrayList<String> result = new ArrayList<String>();
+        
+        //right
+        for(int i=1;i<=dc;i++){
+        ArrayList<String> right = getMazePaths(sr,sc+i,dr,dc);
+        for(String it:right){
+            result.add("h"+i+it);
+        }
+        }
+    
+        //down
+        for(int i=1;i<=dr;i++){
+        ArrayList<String> down = getMazePaths(sr+i,sc,dr,dc);
+        for(String it:down){
+            result.add("v"+i+it);
+        }
+        }
+
+        //daigonal
+        for(int i=1;i<=Math.min(dr,dc);i++){
+        ArrayList<String> dai = getMazePaths(sr+i,sc+i,dr,dc);
+        for(String it:dai){
+            result.add("d"+i+it);
+        }
+
+        }
+
+        return result;
+    }
+
+}
