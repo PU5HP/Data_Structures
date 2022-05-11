@@ -1,0 +1,29 @@
+Remember :
+To make minium number possible combine the first digit with last and the [1] and [2] digits*
+
+### LOGIC
+1. Take a temp vector 
+2. Add the digits from the num to vector
+3. sort the vector
+4. pair(0th element with last element)
+5. pair(1st lement with 2nd element)
+6. return return temp[0]*10+temp[3]+temp[1]*10+temp[3]
+
+### DRY RUN
+1. Temp={}; num=4009
+2. Temp=[4,0,0,9]
+3. temp=[0,0,4,9]
+4. return (0*10 + 9) + (0*10 +4) =13
+
+****CODE****`
+class Solution {
+public:
+    int minimumSum(int num) {
+        vector<int> temp;
+        while(num!=0){
+            temp.push_back(num%10);num=num/10;
+        }
+        sort(temp.begin(),temp.end());
+        return temp[0]*10+temp[3]+temp[1]*10+temp[2];
+    }
+};`
