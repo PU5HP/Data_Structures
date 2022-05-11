@@ -1,0 +1,37 @@
+**STEPS**
+1. Traverse the string
+2. Find the max interger using :
+3. max(numbers,int(n[i])-int('0'));
+    *if we have n[i]='3' the int('3') return 51
+		   we subtract the int('0')=48 from it which gives us 3 as integer*
+4. return the max integer
+
+**LOGIC**
+We require the same numbers of ones column in our answer as the max digit
+
+"1244"              The ans is :4 as in the max digit
+ 1111                
+	0111
+	0011
+	0011
+
+ "35345"           The ans is :5 as in the max digit
+   11111
+   11111
+   11111
+   01011
+   01001
+	 
+	 **Code**
+	 `class Solution {
+public:
+    int minPartitions(string n) {
+        int numbers=0;
+        for(int i=0;i<n.length();i++){
+           numbers =  max(numbers,int(n[i])-int('0'));
+        }
+        return numbers;
+    }
+};`
+	 
+	 
