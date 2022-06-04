@@ -1,0 +1,25 @@
+1290. Convert Binary Number in a Linked List to Integer
+#include<math.h>
+class Solution {
+public:
+    int getDecimalValue(ListNode* head) {
+        //reverse the linked list
+        ListNode *prev = NULL,*curr = head,*nextt= head;
+        while(curr!=NULL){
+            nextt = nextt->next;
+            curr->next= prev;
+            prev = curr;
+            curr = nextt;
+        }
+        head = prev;
+        //linked list reversed now
+        
+        int result=0,i=0;
+        while(head!=NULL){
+            result+=(pow(2,i)*(head->val));
+            i++;
+            head=head->next;
+        }
+        return result;
+    }
+};
